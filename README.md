@@ -21,3 +21,6 @@ opencv-python ~= 3.4.0
 scikit-image ~= 0.14.0
 pyaml
 easygui
+
+# Steps to use
+1 Matlab connection zemax
