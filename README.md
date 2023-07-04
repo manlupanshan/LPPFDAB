@@ -11,7 +11,7 @@ NVIDIA GPU + CUDA cuDNN
 
 pytorch 1.7 or 1.9, the code is slightly different.
 
-requirements
+requirements：
 numpy ~= 1.14.3
 scipy ~= 1.0.1
 future ~= 0.16.0
