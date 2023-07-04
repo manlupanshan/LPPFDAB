@@ -41,7 +41,7 @@ Use Matlab open 'MATLABZOSConnection.m' and run it.
 
 Use Matlab open 'MATLABStandaloneApplication.m' and add code to the '% Add your custom code here...'
 
-3. Use psf which obtained by simulation or real photography to generate the encoded data. Or you can use a Optical System with phase mask get the  encoded data, but it is really really hard to complete.
+3. Use psf which obtained by simulation or real photography to generate the encoded data. Or you can use a Optical System with phase mask get the  encoded data, but it is a little hard to complete thousands of pictures.
 
 4. Prepare the train and val data
 
