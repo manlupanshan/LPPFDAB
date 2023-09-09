@@ -48,6 +48,10 @@ Use Matlab open 'MATLABStandaloneApplication.m' and add code to the '% Add your 
 5. Train the model, and test it
 
 # Code
-
 （Recently we are preparing the thesis, the specific code will be released after streamlining and organizing. If you need it, contact me and I'll speed things up.）
+We list the core code below and explain it:
+1. As I note in Step 2, at the '% Add your custom code here...' need add the code. The step see "Code of optimized phase mask".
+2. Code about the 3 modules, see "Code of our model".
+3. Loss function of our model.
+
    
