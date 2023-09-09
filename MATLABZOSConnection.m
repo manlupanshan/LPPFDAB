@@ -29,7 +29,7 @@ import System.Reflection.*;
 zemaxData = winqueryreg('HKEY_CURRENT_USER', 'Software\Zemax', 'ZemaxRoot');
 NetHelper = strcat(zemaxData, '\ZOS-API\Libraries\ZOSAPI_NetHelper.dll');
 % Note -- uncomment the following line to use a custom NetHelper path
-% NetHelper = 'C:\Users\张磬瀚\Documents\Zemax\ZOS-API\Libraries\ZOSAPI_NetHelper.dll';
+% NetHelper = 'C:\Users\xxx\Documents\Zemax\ZOS-API\Libraries\ZOSAPI_NetHelper.dll';
 % This is the path to OpticStudio
 NET.addAssembly(NetHelper);
 
