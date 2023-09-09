@@ -55,4 +55,5 @@ We list the core code below and explain it:
 2. Code about the 3 modules (Plug-and-play module), see "Code of our model".
 3. Loss function of our model.
 
-   
+# Citation
+If you use this code for your research, please cite our papers Wavefront coding image reconsturction via physical prior and feequency attention
