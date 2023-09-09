@@ -123,7 +123,7 @@ class Muti_feature_fusion_block(nn.Module):
         x = shortcut + self.drop_path(x)
         return x
 
-#3. Code for Frequency domain self-attention block
+#3. Code for the Frequency domain self-attention block
 class Frequency_domain_self_attention_block(nn.Module):
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6):
         super().__init__()
