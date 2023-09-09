@@ -117,6 +117,7 @@ class Muti_feature_fusion_block(nn.Module):
 
         x = shortcut + self.drop_path(x)
         return x
+
 #3. Code for Frequency domain self-attention block
 class Frequency_domain_self_attention_block(nn.Module):
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6):
@@ -168,7 +169,7 @@ class Frequency_domain_self_attention_block(nn.Module):
         x = shortcut + self.drop_path(x)
         return x
 
-#4. I put the code of Convnext here help you understand these code, which are the paper "A ConvNet for the 2020s".
+#4. I put the code of Convnext here help you understand these code, which are from the paper "A ConvNet for the 2020s".
 class ConvNeXt_Block(nn.Module):
     r""" ConvNeXt Block. There are two equivalent implementations:
     (1) DwConv -> LayerNorm (channels_first) -> 1x1 Conv -> GELU -> 1x1 Conv; all in (N, C, H, W)
