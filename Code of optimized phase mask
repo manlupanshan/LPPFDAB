@@ -1,0 +1,6 @@
+%%% Zemax
+%1. Create the extended polymomail at the pupil of the optical system.
+%2. Set the Maximum term to 9 (Cubic phase mask) or bigger (High-order phase mask) .
+%%% Matlab
+%1. 
+%2.
