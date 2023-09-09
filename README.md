@@ -45,9 +45,9 @@ Use Matlab open 'MATLABStandaloneApplication.m' and add code to the '% Add your 
 
 4. Prepare the train and val data
 
-5. Train the model, and use test it
+5. Train the model, and test it
 
 # Code
 
-Recently we are preparing the thesis, the specific code will be released after streamlining and organizing. If you need it, contact me and I'll speed things up.
+（Recently we are preparing the thesis, the specific code will be released after streamlining and organizing. If you need it, contact me and I'll speed things up.）
    
