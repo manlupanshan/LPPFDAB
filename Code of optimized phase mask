@@ -1,6 +1,71 @@
 %%% Zemax
 %1. Create the extended polymomail at the pupil of the optical system.
 %2. Set the Maximum term to 9 (Cubic phase mask) or bigger (High-order phase mask) .
+
 %%% Matlab
-%1. 
-%2.
+%1. The information of the extended polymomail(phase mask).
+TheLDE = TheSystem.LDE;
+Surface_12 = TheLDE.GetSurfaceAt(12);
+SurfaceType_CB = TheLDE.GetSurfaceAt(12).GetSurfaceTypeSettings(ZOSAPI.Editors.LDE.SurfaceType.ExtendedPolynomial); 
+pause(1);
+
+%2. Genetic algorithm determines initial parameters (Population).
+%3. Zemax load the parameters and return the MTF values.
+%4. Calculate and evaluate these values, min parts return NaN values.
+
+%5. Selection, crossover and mutation to generate the new parameters.
+%%   function:Binary to decimal
+   function dec = bintodec3( pop ,popsize, chromlength,zlim )%
+    dec = zeros(1,chromlength);
+    index = chromlength-1:-1:0;
+    for i = 1 : popsize
+        dec(i) = sum(pop(i,:).* (2.^index));
+    end
+    dec = zlim(1) + dec*(  zlim(2) -  zlim(1) ) /( 2 ^ chromlength - 1) ;
+   end
+%%  Selection (Copy operation)
+    function newx = copyx(pop, fitvalue,popsize ) 
+        newx = pop; 
+        i = 1;  j = 1;
+        p = fitvalue / sum(fitvalue) ; 
+        Cs = cumsum(p) ; 
+        R = sort(rand(popsize,1)) ; 
+        while j <= popsize 
+            if R(j) < Cs(i)
+                newx(j,:) = pop(i,:) ;
+                j = j + 1;
+            else
+                i = i + 1;
+            end
+        end
+    end
+ %% crossover
+    function newx = crossover(pop, pc, popsize,chromlength )
+    i = 2 ;
+    newx = pop ;
+    while i + 2 <= popsize
+        if rand < pc
+            x1 = pop(i-1,:);
+            x2 = pop(i,:) ; 
+            r = randperm( chromlength , 2 ) ; 
+            r1 = min(r); r2 =max(r) ; 
+            newx(i-1,:) = [x1( 1 : r1-1),x2(r1:r2) , x1(r2+1: end)];
+            newx(i , : ) = [x2( 1 : r1-1),x1(r1:r2) , x2(r2+1: end)];
+        end
+        i = i + 2 ; 
+    end
+    end
+%% mutation
+    function newx = mutation(pop,pm, popsize,chromlength)
+    i = 1 ;
+    while i <= popsize
+        if rand < pm
+            r = randperm( chromlength , 1 ) ; 
+            pop(i , r) = ~pop(i, r);
+        end
+        i = i + 1;
+    end
+    newx = pop; 
+    end
+
+%6. Output the minimum values and parameters.
