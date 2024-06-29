@@ -281,46 +281,6 @@ class LayerNorm(nn.Module):
             x = self.weight[:, None, None] * x + self.bias[:, None, None]
             return x
 
-%5 I also build the StemNext (Stem from Transformer),which are not use there.
-class stemNeXt(nn.Module):
-    def __init__(self, inputChannels, outputChannels, kernelSize=3, stride=1, padding=1):
-        super(stemNeXt, self).__init__()
-
-        self.downsample_layers = nn.Conv2d(inputChannels, outputChannels, kernelSize, stride, padding)
-        self.activationFunc_LN = nn.BatchNorm2d(outputChannels)
-        self.activ = nn.LeakyReLU(0.2, False)
-
-    def _init_weights(self, m):
-        if isinstance(m, (nn.Conv2d, nn.Linear)):
-            nn.init.trunc_normal_(m.weight, std=0.2)
-            nn.init.constant_(m.bias, 0)
-
-    def forward(self, input_img):
-        Extracted_Features = self.downsample_layers(input_img)
-        Re_Normalization = self.activationFunc_LN(Extracted_Features)
-        Re_Normalization = self.activ(Re_Normalization)
-
-        return Re_Normalization
-
-
-class stemNeXt_up(nn.Module):
-    def __init__(self, inputChannels, outputChannels, kernelSize=3, stride=1, padding=1):
-        super(stemNeXt_up, self).__init__()
-
-        self.downsample_layers = nn.Conv2d(inputChannels, outputChannels, kernelSize, stride, padding)
-        self.activationFunc_LN = nn.BatchNorm2d(outputChannels)
-        self.activ = nn.LeakyReLU(0.2, False)
-
-    def _init_weights(self, m):
-        if isinstance(m, (nn.Conv2d, nn.Linear)):
-            nn.init.trunc_normal_(m.weight, std=0.2)
-            nn.init.constant_(m.bias, 0)
-
-    def forward(self, input_img):
-        Extracted_Features = self.downsample_layers(input_img)
-
-        return Extracted_Features
-
 %5 Part of loss function need the VGG16.
 class VGG16FeatureExtractor(nn.Module):
     def __init__(self):
