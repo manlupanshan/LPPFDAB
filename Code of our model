@@ -302,3 +302,16 @@ class VGG16FeatureExtractor(nn.Module):
             func = getattr(self, 'enc_{:d}'.format(i + 1))
             results.append(func(results[-1]))
         return results[1:]
+%6 add used module 
+class MaskUpdate(nn.Module):
+    def __init__(self, alpha):
+        super(MaskUpdate, self).__init__()
+
+        self.updateFunc = nn.ReLU(True)
+        #self.alpha = Parameter(torch.tensor(alpha, dtype=torch.float32))
+        self.alpha = alpha
+    def forward(self, inputMaskMap):
+        """ self.alpha.data = torch.clamp(self.alpha.data, 0.6, 0.8)
+        print(self.alpha) """
+
+        return torch.pow(self.updateFunc(inputMaskMap), self.alpha)
