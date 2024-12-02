@@ -309,6 +309,7 @@ class VGG16FeatureExtractor(nn.Module):
             func = getattr(self, 'enc_{:d}'.format(i + 1))
             results.append(func(results[-1]))
         return results[1:]
+
 %6 add used module 
 class MaskUpdate(nn.Module):
     def __init__(self, alpha):
