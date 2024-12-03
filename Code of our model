@@ -23,12 +23,12 @@ class ForwardAttentionLayer(nn.Module):
                                   requires_grad=True) if layer_scale_init_value > 0 else None
 
         if inputChannels == 4:
-            self.maskConv = nn.Conv2d(3, outputChannels, kernelSize, stride, padding, dilation, \
+            self.maskConv = nn.Conv2d(3, dim, kernelSize, stride, padding, dilation, \
                 groups, bias)
             self.dwconv_mask = nn.Conv2d(3, dim, kernel_size=4, stride=2, padding=1)
 
         else:
-            self.maskConv = nn.Conv2d(inputChannels, outputChannels, kernelSize, stride, padding, \
+            self.maskConv = nn.Conv2d(dim, dim, kernelSize, stride, padding, \
                 dilation, groups, bias)
             self.dwconv_mask = nn.Conv2d(dim, dim, kernel_size=4, stride=2, padding=1, groups=dim)
 
